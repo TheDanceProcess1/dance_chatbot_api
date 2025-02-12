@@ -1,17 +1,13 @@
-import os
-import openai
 from flask import Flask, request, jsonify
+import openai
 
-# Set your OpenAI API key from environment variables
-openai.api_key = os.getenv("OPENAI_API_KEY")
+app = Flask(__name__)  # Initialize Flask app
 
-# Ensure that the API key is loaded correctly (this will print it in the console for debugging purposes)
-print(f"API Key Loaded in Flask: {openai.api_key}")
+@app.route("/", methods=["GET"])
+def home():
+    return "Hello, this is your chatbot API!"
 
-# Initialize Flask app
-app = Flask(__name__)
-
-@app.route('/ask-dance-question', methods=['POST'])
+@app.route("/ask", methods=["POST"])
 def ask_dance_question():
     data = request.get_json()
     sender_id = data.get('sender_id')
@@ -27,14 +23,14 @@ def ask_dance_question():
             ],
             max_tokens=300
         )
-
-        reply = response.choices[0].message['content']
-
+    
+        reply = response["choices"][0]["message"]["content"]
+    
         return jsonify({"sender_id": sender_id, "response": reply})
-
+    
     except Exception as e:
-        return jsonify({"error": str(e)}), 500
+        return jsonify({"error": str(e)}), 500  
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=5004)
+    app.run(host="0.0.0.0", port=10000)  # Ensure it runs on the correct port
 
