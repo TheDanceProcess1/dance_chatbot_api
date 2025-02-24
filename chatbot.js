@@ -49,5 +49,7 @@
             document.getElementById("chatbotWidget").style.display = "none";
         });
     }
+
+    // **Make sure initChatbot is global**
+    window.initChatbot = initChatbot;
 })();
-window.initChatbot = initChatbot;
