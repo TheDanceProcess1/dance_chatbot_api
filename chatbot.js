@@ -1,11 +1,11 @@
-(function() {
+(function () {
     let chatContainer = document.createElement("div");
     chatContainer.id = "danceProcessChatbot";
     document.body.appendChild(chatContainer);
 
     let script = document.createElement("script");
     script.src = "https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js";
-    script.onload = function() {
+    script.onload = function () {
         initChatbot();
     };
     document.body.appendChild(script);
@@ -64,24 +64,27 @@
         userMessageElement.innerHTML = `<strong>You:</strong> ${userMessage}`;
         chatMessages.appendChild(userMessageElement);
         
-        // **API Request**
-        axios.post("https://dance-chatbot-api.onrender.com/chat", { message: userMessage })
-            .then(response => {
-                let botMessageElement = document.createElement("div");
-                botMessageElement.style.backgroundColor = "#FFF";
-                botMessageElement.style.padding = "8px";
-                botMessageElement.style.margin = "4px 0";
-                botMessageElement.style.borderRadius = "5px";
-                botMessageElement.innerHTML = `<strong>Bot:</strong> ${response.data.reply}`;
-                chatMessages.appendChild(botMessageElement);
-            })
-            .catch(error => {
-                console.error("Error sending message:", error);
-                let errorElement = document.createElement("div");
-                errorElement.style.color = "red";
-                errorElement.innerHTML = "Error communicating with the chatbot.";
-                chatMessages.appendChild(errorElement);
-            });
+        // **FIXED API Request**
+        axios.post("https://dance-chatbot-api.onrender.com/ask", { 
+            sender_id: "user",
+            message: userMessage 
+        })
+        .then(response => {
+            let botMessageElement = document.createElement("div");
+            botMessageElement.style.backgroundColor = "#FFF";
+            botMessageElement.style.padding = "8px";
+            botMessageElement.style.margin = "4px 0";
+            botMessageElement.style.borderRadius = "5px";
+            botMessageElement.innerHTML = `<strong>Bot:</strong> ${response.data.response}`;
+            chatMessages.appendChild(botMessageElement);
+        })
+        .catch(error => {
+            console.error("Error sending message:", error);
+            let errorElement = document.createElement("div");
+            errorElement.style.color = "red";
+            errorElement.innerHTML = "Error communicating with the chatbot.";
+            chatMessages.appendChild(errorElement);
+        });
 
         document.getElementById("chatbot-input").value = ""; // Clear input field
     }
