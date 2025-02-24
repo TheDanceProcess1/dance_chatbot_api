@@ -53,4 +53,4 @@
     // **Make sure initChatbot is global**
     window.initChatbot = initChatbot;
 })();
-window.initChatbot = initChatbot;
+
