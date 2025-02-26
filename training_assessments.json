@@ -1,0 +1,21 @@
+{
+    "name": "training_assessments",
+    "description": "Provides structured training plans based on user needs.",
+    "assessments": {
+        "assessment_flow": [
+            "Ask the user what they want to improve.",
+            "Ask how often they train and what their current struggles are.",
+            "Provide a customized program recommendation based on their answers.",
+            "Offer to email them the full plan with video links and tracking tools.",
+            "Transition into explaining membership benefits."
+        ],
+        "competition_prep": {
+            "user_query": "My dancer gets nervous before competitions.",
+            "response": "Performance nerves are normal! Our competition prep program includes guided visualization exercises, pre-performance mental routines, and focus training. Would you like a breakdown of exercises to help them feel more confident?"
+        },
+        "teacher_support": {
+            "user_query": "I\u2019m a teacher looking for ways to help my students with turns.",
+            "response": "Teaching turns effectively requires proper drills, spotting techniques, and strengthening exercises. I can provide a structured breakdown for your class, including warm-up sequences, spotting & balance drills, and strength-building exercises. Would you like me to send you a turns training program?"
+        }
+    }
+}

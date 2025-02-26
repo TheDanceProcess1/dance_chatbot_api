@@ -1,0 +1,19 @@
+{
+    "name": "navigation_guide",
+    "description": "Ensures smooth navigation between chatbot, app, and sales page.",
+    "navigation_rules": {
+        "membership_handling": [
+            "If the user is a non-member, direct them to a sales page link.",
+            "If the user is a member, provide a direct app link."
+        ],
+        "app_links": {
+            "for_members": "When you click this link, the app will open directly to your lesson. If the app isn\u2019t open, it will take you to the homepage.",
+            "for_non_members": "This content is available in our membership! Join now to unlock this full training program. Would you like to see a breakdown of what\u2019s included?"
+        },
+        "sales_page_redirects": {
+            "user_query": "How do I purchase?",
+            "response": "I\u2019d love to show you how easy it is to get started! Click below to explore our membership options.",
+            "link": "[Insert Sales Page Link]"
+        }
+    }
+}
