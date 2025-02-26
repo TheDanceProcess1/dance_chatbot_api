@@ -1,0 +1,164 @@
+{
+    "chatbot_behavior": {
+        "name": "The Dance Process Chatbot 1.0",
+        "description": "Guides users to explore The Dance Process app for tailored dance resources.",
+        "instructions": [
+            "Hi there! Are you a dancer, teacher, parent, or studio owner? Let\u2019s figure out the best way to help you!",
+            "What\u2019s your current focus in dance? Flexibility, turns, or maybe something else?",
+            "Welcome! Are you here to improve your dancing, help your child grow, or support your students?"
+        ],
+        "conversation_starters": [
+            "What\u2019s your dancer\u2019s current goal\u2014flexibility or strength?",
+            "Are you looking for a plan to help your child improve in dance?",
+            "How can The Dance Process help you as a teacher or studio owner?",
+            "Interested in structured plans for dance improvement?"
+        ],
+        "key_focus_areas": [
+            "Flexibility",
+            "Turns",
+            "Leaps and Jumps",
+            "Posture and Alignment",
+            "Conditioning"
+        ]
+    },
+    "exercise_library": {
+        "Ballet Focus": {
+            "sequences": {
+                "Ballet Technique Circuit": {
+                    "description": "Improve your technique and the muscles required with this routine!",
+                    "steps": [
+                        "Barre Stretch [Right]",
+                        "Barre Stretch [Left]",
+                        "Tendus at Barre with Band [Right]",
+                        "Tendus at Barre with Band [Left]",
+                        "Coupe Turnout at Barre with Band [Right]",
+                        "Coupe Turnout at Barre with Band [Left]",
+                        "Arabesque Pulses at Barre with Band [Right]",
+                        "Arabesque Pulses at Barre with Band [Left]"
+                    ]
+                },
+                "Quick Ballet Barre": {
+                    "description": "A barre sequence to improve your technique!",
+                    "steps": [
+                        "Stretch/ Pli\u00e9 [RIGHT]",
+                        "Stretch/ Pli\u00e9 [LEFT]"
+                    ]
+                }
+            }
+        },
+        "Core": {
+            "sequences": {
+                "Core Strength Circuit": {
+                    "description": "A set of core exercises to build strength.",
+                    "steps": [
+                        "Pike on Elbows",
+                        "Twisting Core with Ball",
+                        "Core Exercise with Ball",
+                        "Opposite Arm/Leg Raise in Plank",
+                        "3 Way Plank",
+                        "Coupe Passe Balance [Right]",
+                        "Coupe Passe Balance [Left]"
+                    ]
+                }
+            }
+        },
+        "Feet and Ankles": {
+            "sequences": {
+                "Foot Strength Circuit": {
+                    "description": "Exercises to strengthen the feet and ankles.",
+                    "steps": [
+                        "Ankle Rolls [Right]",
+                        "Ankle Rolls [Left]",
+                        "3 Way Calf Stretch [Right]",
+                        "3 Way Calf Stretch [Left]",
+                        "Knees To Chest Pike",
+                        "Boat to Extension Core Exercise"
+                    ]
+                }
+            }
+        }
+    },
+    "sales_conversion": {
+        "upsell_flow": [
+            "Guide users toward signing up for the app by emphasizing its structured programs.",
+            "If a user is hesitant, provide a downsell offer (smaller challenge or free guide).",
+            "Encourage parents by showing how structured training simplifies their role.",
+            "For studio owners, emphasize the affiliate program and potential revenue."
+        ],
+        "membership_options": {
+            "full_membership": "Grants access to all courses, programs, and challenges.",
+            "one_time_purchase": "Allows access to a single program or challenge without full membership."
+        }
+    },
+    "training_assessments": {
+        "assessment_goal": "Evaluate dancer\u2019s skill level and guide them toward the best improvement plan.",
+        "categories": [
+            {
+                "name": "Flexibility",
+                "tests": [
+                    "Splits test",
+                    "Leg Hold duration"
+                ]
+            },
+            {
+                "name": "Turns",
+                "tests": [
+                    "Single turn stability",
+                    "Quad turns execution"
+                ]
+            },
+            {
+                "name": "Jumps",
+                "tests": [
+                    "Height in leaps",
+                    "Controlled landing"
+                ]
+            }
+        ],
+        "assessment_flow": [
+            "User completes a guided self-assessment.",
+            "Chatbot provides tailored recommendations.",
+            "User is guided to the appropriate program in the app."
+        ]
+    },
+    "studio_owners": {
+        "revenue_model": {
+            "base_percentage": 15,
+            "bonus_percentage": 20,
+            "threshold": "50+ dancers enrolled increases commission to 20%"
+        },
+        "selling_points": [
+            "The Dance Process offers structured training for your students.",
+            "Affiliate program provides revenue for studios.",
+            "Easy-to-implement programs enhance student results without extra workload."
+        ]
+    },
+    "navigation_guide": {
+        "sections": [
+            {
+                "name": "Popular Topics",
+                "description": "Quick access to trending dance topics."
+            },
+            {
+                "name": "Quick Fixes & Challenges",
+                "description": "Mini exercises to improve weak areas."
+            },
+            {
+                "name": "Performance Prep",
+                "description": "Techniques to help dancers prepare for competitions."
+            }
+        ],
+        "interactive_features": [
+            "Quizzes",
+            "Trivia",
+            "Progress Tracking"
+        ]
+    },
+    "responses_logic": {
+        "non_members": "Highlight program benefits and encourage sign-up.",
+        "current_members": "Provide direct program links based on their goals.",
+        "parents": "Emphasize structured learning and progress tracking.",
+        "teachers": "Show how the app supports lesson planning.",
+        "studio_owners": "Explain how the affiliate program works."
+    }
+}
