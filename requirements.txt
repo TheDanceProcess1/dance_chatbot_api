@@ -3,4 +3,4 @@ openai
 gunicorn
 uvicorn
 flask_cors
-
+firebase-admin
