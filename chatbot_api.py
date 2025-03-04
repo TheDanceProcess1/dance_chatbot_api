@@ -13,11 +13,14 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 # Load Firebase credentials from environment variable
 firebase_service_account = os.getenv("FIREBASE_SERVICE_ACCOUNT_KEY")
 if firebase_service_account:
-    cred = credentials.Certificate(eval(firebase_service_account))
-    firebase_admin.initialize_app(cred)
-    db = firestore.client()
+    try:
+        cred = credentials.Certificate(eval(firebase_service_account))
+        firebase_admin.initialize_app(cred)
+        db = firestore.client()
+    except Exception as e:
+        print(f"Firebase initialization error: {e}")
 else:
-    raise ValueError("Missing Firebase Service Account Key")
+    print("Warning: Missing Firebase Service Account Key")
 
 @app.route("/", methods=["GET"])
 def home():
