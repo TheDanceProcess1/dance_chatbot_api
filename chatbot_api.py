@@ -1,42 +1,48 @@
 from flask import Flask, request, jsonify
-from flask_cors import CORS
 import openai
+import firebase_admin
+from firebase_admin import credentials, firestore
 import os
 
+# Initialize Flask app
 app = Flask(__name__)
-CORS(app, origins=["https://www.thedanceprocess.com", "https://chatbot-api.onrender.com"])
 
-# Set OpenAI API Key from environment variable
+# Set OpenAI API Key
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
-@app.route("/")
+# Load Firebase credentials from environment variable
+firebase_service_account = os.getenv("FIREBASE_SERVICE_ACCOUNT_KEY")
+if firebase_service_account:
+    cred = credentials.Certificate(eval(firebase_service_account))
+    firebase_admin.initialize_app(cred)
+    db = firestore.client()
+else:
+    raise ValueError("Missing Firebase Service Account Key")
+
+@app.route("/", methods=["GET"])
 def home():
-    return "Hello, this is your chatbot API!"
+    return jsonify({"message": "Chatbot API is running!"})
 
-@app.route("/ask", methods=["POST"])
-def ask_dance_question():
-    data = request.get_json()
-    sender_id = data.get("sender_id")
-    user_query = data.get("message")
-
+@app.route("/chat", methods=["POST"])
+def chat():
     try:
-        # OpenAI API call using the new format
-        response = openai.chat.completions.create(
-            model="gpt-4",  # Change to "gpt-3.5-turbo" if needed
-            messages=[
-                {"role": "system", "content": "You are a dance training assistant for The Dance Process."},
-                {"role": "user", "content": user_query}
-            ],
-            max_tokens=300
+        data = request.json
+        user_message = data.get("message")
+        
+        if not user_message:
+            return jsonify({"error": "Message is required"}), 400
+        
+        response = openai.ChatCompletion.create(
+            model="gpt-4",
+            messages=[{"role": "user", "content": user_message}]
         )
-
-        reply = response.choices[0].message.content
-
-        return jsonify({"sender_id": sender_id, "response": reply})
-
+        
+        bot_reply = response["choices"][0]["message"]["content"]
+        return jsonify({"reply": bot_reply})
+    
     except Exception as e:
-        return jsonify({"error": str(e)}), 500  
+        return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=10000)
-
+    port = int(os.environ.get("PORT", 10000))  # Default to 10000
+    app.run(host="0.0.0.0", port=port)
